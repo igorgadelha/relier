@@ -9,7 +9,7 @@ import { AuthService } from './auth/auth.service';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
-  public auth: boolean;
+  public auth: boolean ;
   public appPages = [
     {
       title: 'Home',
@@ -20,7 +20,7 @@ export class AppComponent {
     {
       title: 'Login',
       url: '/login',
-      icon: 'user',
+      icon: 'person',
       auth: false
     },
     {
@@ -46,9 +46,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.authCtrl.authSubject.subscribe(bol => this.auth = bol);
+    console.log (this.auth);
 
-    this.authCtrl
-        .isLoggedIn()
-        .then(r => { this.auth = r });
   }
 }

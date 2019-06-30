@@ -58,6 +58,7 @@ export class LoginPage implements OnInit {
         .then(
           success => {
             this.presentToast('Login realizado com sucesso!');
+            this.authCtrl.authSubject.next(true);
             this.router.navigate(["product"]);
           },
           error => {
