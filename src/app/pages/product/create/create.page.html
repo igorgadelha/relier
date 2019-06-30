@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cadastro de produto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Categoria</ion-label>
+        <ion-input type="text" formControlName="categoria"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Preço</ion-label>
+        <ion-input type="number" step="any" formControlName="preco"></ion-input>
+      </ion-item>
+    </ion-list>
+      <!-- Colors -->
+    <ion-button  type="submit" color="success" expand="block" [disabled]="!this.createForm.valid">Cadastrar</ion-button>
+  </form>
+</ion-content>

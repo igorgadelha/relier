@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Visualizar Produto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" formControlName="nome" value="{{this.data?.nome}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Categoria</ion-label>
+        <ion-input type="text" formControlName="categoria" value="{{this.data?.categoria}}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Preço</ion-label>
+        <ion-input type="number" step="any" formControlName="preco" value="{{this.data?.preco}}"></ion-input>
+      </ion-item>
+    </ion-list>
+      <!-- Colors -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button  type="submit" color="success" expand="block" [disabled]="!this.editForm.valid">Atualizar</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button  type="button" color="danger" (click)="presentAlertConfirm()" expand="block">Apagar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </form>
+</ion-content>
