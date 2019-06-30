@@ -14,7 +14,7 @@
 
 <ion-content>
   <!-- Searchbar with cancel button shown on focus -->
-<ion-searchbar showCancelButton="focus" debounce="500" animated placeholder="Filtrar produtos" cancelButtonText="Limpar"></ion-searchbar>
+<ion-searchbar showCancelButton="focus" debounce="500" animated placeholder="Filtrar produtos" (ionInput)="filterProducts($event)" cancelButtonText="Limpar"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let product of products"(click)="open()" [routerLink]="['/product/' + product.id ]" routerDirection="forward" detail>
       <ion-label color="primary">{{product.nome}}</ion-label>

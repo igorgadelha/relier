@@ -12,6 +12,7 @@ import { Observable, BehaviorSubject, Subscription } from  'rxjs';
 })
 export class ListPage implements OnInit {
   public products: any;
+  public allProducts: any;
   public loading: any;
   constructor(
     public productCtrl: ProductService,
@@ -29,7 +30,8 @@ export class ListPage implements OnInit {
         .list()
         .then( res => {
           console.log (res);
-          this.products = res;
+          this.allProducts = res;
+          this.products = this.allProducts;
         },
         (error) => {
           console.log(error);
@@ -45,12 +47,18 @@ export class ListPage implements OnInit {
     return await loading.present();
   }
 
-  open() {
+  filterProducts (ev: any) {
+    // set val to the value of the searchbar
+    let val = ev.target.value;
 
-  }
-
-  create() {
-
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.products = this.allProducts.filter((item) => {
+        return item.nome.toLowerCase().indexOf(val.toLowerCase()) > -1;
+      });
+    } else {
+      this.products = this.allProducts;
+    }
   }
 
 }
