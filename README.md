@@ -1,7 +1,6 @@
 # relier
-Teste para Front-end Relier
+Teste para Front-end Relier (inic v4 + Angular)
 
-#inic v4 + Angular
 #install dependencies
 npm install
 
